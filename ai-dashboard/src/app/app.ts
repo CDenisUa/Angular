@@ -1,20 +1,19 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { Counter } from './counter';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [AsyncPipe],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
   protected readonly title = signal('ai-dashboard');
+  counter$!: Counter['counter$'];
 
-  constructor(private counter: Counter) {}
-
-  get count(): number {
-    return this.counter.getCounter();
+  constructor(private counter: Counter) {
+    this.counter$ = this.counter.counter$;
   }
 
   increment(): void {
