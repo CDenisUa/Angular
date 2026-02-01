@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Counter } from './counter';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,19 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('ai-dashboard');
+
+  constructor(private counter: Counter) {}
+
+  get count(): number {
+    return this.counter.getCounter();
+  }
+
+  increment(): void {
+    this.counter.increment();
+  }
+
+  decrement(): void {
+    this.counter.decrement();
+  }
+
 }
