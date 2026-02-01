@@ -31,6 +31,10 @@ yarn-error.log*
 
 # Miscellaneous
 .angular/cache/
+.cache/
+cache/
+.eslintcache
+.stylelintcache
 .sass-cache/
 connect.lock
 coverage/
